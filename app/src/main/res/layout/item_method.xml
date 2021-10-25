@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.dsj.hookapi.demo.entity.MethodInfo"/>
+        <variable name="Method" type="MethodInfo"/>
+        <variable name="longClick" type="com.dsj.hookapi.demo.listener.MethodClickListener"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_method_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="0dp"
+            android:longClickable="true"
+            android:orientation="vertical">
+<!--        android:onLongClick="@{() ->longClick.clickMethod(Method)}"-->
+
+        <View android:layout_width="0dp" android:layout_height="0dp"
+              app:layout_constraintTop_toTopOf="@+id/item_method_name"
+              app:layout_constraintBottom_toBottomOf="@+id/item_method_path"
+              android:background="#eee"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_method_name"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:paddingTop="3dp"
+                android:textColor="#333"
+                android:text="@{Method.methodName}"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_method_path"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:paddingBottom="3dp"
+                android:textColor="#666"
+                android:text="@{Method.className}"
+                app:layout_constraintTop_toBottomOf="@+id/item_method_name"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

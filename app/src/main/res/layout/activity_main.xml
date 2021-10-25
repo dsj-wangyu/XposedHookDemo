@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/main_tab_application"
+                android:layout_width="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/main_tab_method"
+                app:layout_constraintHorizontal_weight="1"
+                android:text="已选择的应用"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_height="45dp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/main_tab_method"
+                android:layout_width="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/main_tab_application"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                android:background="#eee"
+                android:hint="输入方法名"
+                android:imeOptions="actionSend"
+                android:maxLines="1"
+                android:gravity="center_vertical|start"
+                android:textSize="18sp"
+                android:paddingStart="15dp"
+                android:paddingEnd="5dp"
+                android:layout_height="45dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/main_rv_application"
+                app:layout_constraintTop_toBottomOf="@+id/main_tab_application"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/main_tab_application"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="0dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="5dp"
+                android:layout_height="0dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/main_rv_method"
+                android:paddingStart="5dp"
+                android:paddingEnd="0dp"
+                app:layout_constraintStart_toEndOf="@+id/main_tab_application"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_tab_application"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="15dp"
+                android:text="test"
+                android:onClick="goTest"
+                android:gravity="center"
+                android:background="@drawable/btn_main_totest"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

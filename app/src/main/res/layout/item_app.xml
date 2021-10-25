@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.dsj.hookapi.demo.entity.AppInfo"/>
+        <variable name="AppData" type="AppInfo"/>
+        <variable name="itemClick" type="com.dsj.hookapi.demo.listener.AppClickListener"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:onClick="@{() ->itemClick.clickItem(AppData)}"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/item_application_icon"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="10dp"
+                android:layout_width="60dp"
+                app:itemDrawable="@{AppData.drawable}"
+                android:layout_height="60dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_application_name"
+                app:layout_constraintTop_toTopOf="@+id/item_application_icon"
+                app:layout_constraintStart_toEndOf="@+id/item_application_icon"
+                app:layout_constraintBottom_toTopOf="@+id/item_application_code"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"
+                android:textColor="#333"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginEnd="10dp"
+                android:text="@{AppData.appName}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_application_code"
+                app:layout_constraintTop_toBottomOf="@+id/item_application_name"
+                app:layout_constraintBottom_toBottomOf="@+id/item_application_icon"
+                android:layout_width="0dp"
+                app:layout_constraintStart_toEndOf="@+id/item_application_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="10dp"
+                android:textSize="13sp"
+                android:textColor="#333"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="@{AppData.verCode}"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_application_pkg"
+                android:textSize="10sp"
+                android:textColor="#333"
+                app:layout_constraintTop_toBottomOf="@+id/item_application_icon"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:gravity="center"
+                android:text="@{AppData.pkgName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+              app:layout_constraintTop_toBottomOf="@+id/item_application_pkg"
+              android:background="#bbb"
+              android:layout_marginStart="10dp"
+              android:layout_marginTop="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/item_application_select"
+                android:layout_margin="6dp"
+                android:scaleType="fitXY"
+                app:AppSelect="@{AppData.select}"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.dsj.hookapi.demo.entity.AppInfo"/>
+        <variable name="appData" type="AppInfo"/>
+
+        <import type="androidx.databinding.ObservableMap"/>
+        <variable name="defaultMap" type="androidx.databinding.ObservableMap&lt;String, String&gt;"/>
+        <variable name="key" type="String"/>
+
+        <variable name="defaultList" type="androidx.databinding.ObservableList&lt;String&gt;"/>
+        <variable name="index" type="int"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:id="@+id/demo_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{appData.appName + '\n' + appData.pkgName}"
+                android:gravity="center"
+                android:onClick="clickApp"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+                android:id="@+id/demo_map"
+                app:layout_constraintTop_toBottomOf="@+id/demo_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:padding="5dp"
+                android:onClick="clickMap"
+                android:text="@{defaultMap[key], default = mapDefault}"/>
+
+        <TextView
+                android:id="@+id/demo_list"
+                app:layout_constraintTop_toBottomOf="@+id/demo_map"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="15sp"
+                android:text="@{defaultList[index], default = listDefault}"
+                android:layout_width="wrap_content"
+                android:onClick="clickList"
+                android:layout_height="wrap_content"/>
+
+        <EditText
+                android:id="@+id/demo_edit"
+                android:background="#ddd"
+                app:layout_constraintTop_toBottomOf="@+id/demo_list"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:inputType="number"
+                android:hint="@string/app_name"
+                android:textSize="15sp"
+                android:gravity="start|center_vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="@={appData.numbers, default = editDefalt}"
+                android:layout_width="match_parent"
+                android:layout_height="45dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
